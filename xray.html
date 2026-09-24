@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>X-Ray Metal Scanner</title>
+<link rel="stylesheet" href="xray.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-icon">☣</span>
+      <span>SPECTRA<b>SCAN</b></span>
+    </div>
+    <div class="status-pill" id="statusPill">
+      <span class="dot" id="statusDot"></span>
+      <span id="statusText">Initializing…</span>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section class="scanner-panel">
+      <div class="scan-frame" id="scanFrame">
+        <video id="video" autoplay playsinline muted></video>
+        <canvas id="canvas"></canvas>
+
+        <div class="silhouette-guide"></div>
+
+        <div class="sweep-line" id="sweepLine"></div>
+        <div class="grid-overlay"></div>
+        <div class="corner tl"></div>
+        <div class="corner tr"></div>
+        <div class="corner bl"></div>
+        <div class="corner br"></div>
+
+        <div class="scan-caption" id="scanCaption">Step into the frame to begin scan</div>
+      </div>
+
+      <div class="controls">
+        <button id="startBtn" class="btn primary">Start Camera</button>
+        <button id="scanBtn" class="btn" disabled>Run Manual Scan</button>
+        <label class="auto-toggle">
+          <input type="checkbox" id="autoToggle" checked />
+          Auto-scan on approach
+        </label>
+      </div>
+    </section>
+
+    <section class="results-panel">
+      <h2>Scan Report</h2>
+      <div class="report-meta">
+        <div><span>Subject ID</span><b id="subjectId">—</b></div>
+        <div><span>Scan Time</span><b id="scanTime">—</b></div>
+        <div><span>Threat Level</span><b id="threatLevel">—</b></div>
+      </div>
+
+      <ul id="itemList" class="item-list">
+        <li class="empty-state">No scan performed yet.</li>
+      </ul>
+
+      <p class="disclaimer">
+        ⚠️ Simulation only. A regular webcam has no way to see through clothing or
+        detect real metal — this page renders a stylised X-ray visual effect and
+        generates illustrative results for demo purposes. It is not a real security
+        or medical scanning device.
+      </p>
+    </section>
+
+  </main>
+
+  <script src="xray.js"></script>
+</body>
+</html>
